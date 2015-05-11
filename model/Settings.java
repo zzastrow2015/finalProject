@@ -18,6 +18,7 @@ public class Settings {
 	public Settings(String difficulty, boolean limitedBorders, boolean obstacles){
 		delayTime = 120;
 				
+		//delayTime determines how long of a delay should take place before the snake is updated.
 		if(difficulty.toUpperCase().equals("EASY")){
 			delayTime = 120;
 		}
