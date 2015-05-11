@@ -21,13 +21,14 @@ public class MainMenu extends JFrame{
 	private int xPos;
 	private int yPos;
 	
-	
+	//When the program is first executed, display the main menu.
 	public static void main(String[] args) throws IOException {
 		MainMenu menu = new MainMenu();
 		menu.setVisible(true);
 	}
 	
 	public MainMenu() throws IOException{
+		//Sets the dimensions of the main menu.
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    xPos = (int) ((dimension.getWidth() - 500) / 2);
 	    yPos = (int) ((dimension.getHeight() - 600) / 2);
@@ -42,8 +43,10 @@ public class MainMenu extends JFrame{
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		//Creates the play button
 		JButton btnStart = new JButton("Play");
 		btnStart.addActionListener(new ActionListener() {
+			//when button is pressed, display settings menu
 			public void actionPerformed(ActionEvent e) {
 				try {
 					SettingsMenu set = new SettingsMenu(ref);
@@ -56,8 +59,10 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		//Creates the high scores button
 		JButton btnScores = new JButton("High Scores");
 		btnScores.addActionListener(new ActionListener() {
+			//When button is pressed, display high score window.
 			public void actionPerformed(ActionEvent e2) {
 				
 				try {
@@ -73,11 +78,13 @@ public class MainMenu extends JFrame{
 			}
 		});
 		
+		//Determines where to place the buttons in the panel.
 		btnStart.setBounds(150, 109, 140, 40);
 		getContentPane().add(btnStart);
 		btnScores.setBounds(150, 160, 140, 40);
 		getContentPane().add(btnScores);
 		
+		//Displays game title.
 		JLabel lblSnakeGame = new JLabel("SNAKE GAME");
 		lblSnakeGame.setFont(new Font("Viner Hand ITC", Font.BOLD, 45));
 		lblSnakeGame.setBounds(45, 32, 351, 50);
