@@ -15,6 +15,7 @@ public class Scores {
 	private int score;
 	private String scenario;
 	
+	//Constructor sets the final score and scenario that was played.
 	public Scores(int num, String scen){
 		score = num;
 		scenario = scen;
@@ -29,26 +30,33 @@ public class Scores {
 		 String newName;
 		 
 		 try {
+		 	//Reads in the current high score list.
 			BufferedReader br = new BufferedReader(new FileReader("highScores"));
 			String[] topSplit;
 			while((line = br.readLine()) != null){
+				//The score, name, and scenario are split by a tab (\t)
 				topSplit = line.split("\t");
 				highNames.add(topSplit[0]);
 				highScores.add(topSplit[1]);
 				highScenarios.add(topSplit[2]);
 			}
 			
+			//Increments down the list of high scores
 			for(int i = 0; i < highScores.size(); i++){
+				//If a line is reached where a high score hasn't been saved, place the score there.
 				if(highScores.get(i).equals("-")){
 					highScores.set(i, "0");
 				}
+				//Determine if the score passed in is higher than the current line.
 				if(score > Integer.parseInt(highScores.get(i))){
 					newName = JOptionPane.showInputDialog("<html><br>Congrats! New High Score!<br>Please enter your name: </html>");
 					
 					if(newName != null){
+						//adds the name, score, and scenario into the proper list position.
 						highNames.add(highNames.get(highNames.size() - 1));
 						highScores.add(highScores.get(highScores.size() - 1));
 						highScenarios.add(highScenarios.get(highScenarios.size() - 1));
+						//sets the new list accordingly.
 						for(int j = highScores.size(); j >= i; j--){
 							
 							if(j == i){
@@ -70,6 +78,7 @@ public class Scores {
 
 						}
 					}else{
+						//If the cancel button was pushed, the score will not be saved.
 						JOptionPane.showMessageDialog(null, "No name was entered. High score was not recorded.");
 					}
 
@@ -77,6 +86,7 @@ public class Scores {
 				}
 			}
 			
+			//Writes the new data to the file
 			BufferedWriter bw = new BufferedWriter(new FileWriter("highScores"));
 			
 			for(int i = 0; i < highScores.size(); i++){
@@ -107,6 +117,7 @@ public class Scores {
 		String line;
 		
 		try {
+			//Gets the scores, names, and scenarios from the file.
 			BufferedReader reader = new BufferedReader(new FileReader("highScores"));
 		
 			while((line = reader.readLine()) != null){
