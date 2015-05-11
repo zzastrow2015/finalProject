@@ -36,6 +36,8 @@ public class SettingsMenu extends JFrame{
 	private ButtonGroup buttonGroup1 = new ButtonGroup();
 	
 	public SettingsMenu(JFrame j) throws IOException{
+		
+		//sets the dimensions of the settings menu
 		previous = j;
 		Dimension dimension = Toolkit.getDefaultToolkit().getScreenSize();
 	    xPos = (int) ((dimension.getWidth() - 500) / 2);
@@ -54,6 +56,7 @@ public class SettingsMenu extends JFrame{
 		contentPane.add(panel);
 		panel.setLayout(null);
 		
+		//adds radio buttons for each difficulty
 		JRadioButton rdbtnNewRadioButton_1 = new JRadioButton("Easy");
 		rdbtnNewRadioButton_1.setActionCommand("Easy");
 		rdbtnNewRadioButton_1.setBounds(6, 5, 109, 23);
@@ -84,6 +87,7 @@ public class SettingsMenu extends JFrame{
 		contentPane.add(panel_1);
 		panel_1.setLayout(null);
 		
+		//Adds radio buttons corresponding to each scenario
 		JRadioButton rdbtnNewRadioButton_4 = new JRadioButton("Classic");
 		rdbtnNewRadioButton_4.setActionCommand("Classic");
 		rdbtnNewRadioButton_4.setBounds(78, 18, 155, 23);
@@ -111,6 +115,7 @@ public class SettingsMenu extends JFrame{
 		
 		Image img;
 		
+		//imports images that correspond to each scenario
 		JLabel label_3 = new JLabel("");
 		label_3.setBounds(10, 18, 53, 41);
 		panel_1.add(label_3);
@@ -135,15 +140,17 @@ public class SettingsMenu extends JFrame{
 		img = new ImageIcon(this.getClass().getResource("/images4.png")).getImage();
 		label_2.setIcon(new ImageIcon(img));
 		
-		
+		//Label prompts user to select a radio button for difficulty
 		JLabel lblSelect = new JLabel("Select difficulty:");
 		lblSelect.setBounds(10, 11, 188, 14);
 		contentPane.add(lblSelect);
 		
+		//Label prompts user to select a radio button for scenario
 		JLabel lblSelectAScenario = new JLabel("Select a scenario:");
 		lblSelectAScenario.setBounds(185, 11, 226, 14);
 		contentPane.add(lblSelectAScenario);
 		
+		//Back button to go back to main menu.
 		final JFrame ref = this;
 		JButton btnNewButton = new JButton("Back");
 		btnNewButton.addActionListener(new ActionListener() {
@@ -153,24 +160,30 @@ public class SettingsMenu extends JFrame{
 			}
 		});
 		
+		//Starts the game
 		final SettingsMenu ref2 = this;
 		btnNewButton.setBounds(120, 303, 77, 31);
+		//adds start game button
 		contentPane.add(btnNewButton);
 		JButton btnNewButton_1 = new JButton("Start game");
 		btnNewButton_1.setBounds(207, 303, 132, 31);
 		contentPane.add(btnNewButton_1);
 		btnNewButton_1.addActionListener(new ActionListener() {
+			//when pressed, do the following actions:
 			public void actionPerformed(ActionEvent e) {
 				ref2.setEnabled(false);
 				
+				//sets difficulty and scenario based on which radio button was selected.
 				String difficulty = buttonGroup.getSelection().getActionCommand();
 				String scenario = buttonGroup1.getSelection().getActionCommand();
 				
+				//sets the scenario variables for obstacles and walls.
 				boolean wall, obstacles;
 				wall = scenario == "Classic" || scenario == "ClassicObstacles";
 				
 				obstacles = scenario == "NoWallObstacles" || scenario == "ClassicObstacles";
 				
+				//Creates the game window
 				GameWindow game = new GameWindow(ref2, new Settings(difficulty, wall, obstacles));
 				
 				game.setTitle("Snake");
