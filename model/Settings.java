@@ -14,6 +14,7 @@ public class Settings {
 	
 	private int delayTime;
 	
+	//Sets the difficulty, if there's borders, and if there's obstacles based on what was passed from the controller.
 	public Settings(String difficulty, boolean limitedBorders, boolean obstacles){
 		delayTime = 120;
 				
