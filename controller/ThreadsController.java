@@ -39,6 +39,7 @@ public class ThreadsController extends Thread {
 		scoreLabel.setHorizontalAlignment(JLabel.CENTER);
 		scoreLabel.setVerticalAlignment(JLabel.CENTER);
 		
+		//sets initial direction of snake.
 		headSnakePos = new Position(positionDepart.getX(),positionDepart.getY());
 		directionSnake = 1;
 		Position headPos = new Position(headSnakePos.getX(),headSnakePos.getY());
@@ -48,6 +49,7 @@ public class ThreadsController extends Thread {
 			obstacles.add(notSnakeObstacle());
 		}
 				
+		//sets initial food position.
 		Position foodPos = notSnakeObstacle();
 		foodPosition= new Position(foodPos.getX(), foodPos.getY());
 		spawnFood(foodPosition);
@@ -84,6 +86,7 @@ public class ThreadsController extends Thread {
 		 timeLabel.setText(String.valueOf(time));
 		 
 		 try{
+		 	//Every second, update the countdown time. If the countdown hits 0, break from the loop.
 			 for(int x = 3; x > 0; x--){
 				 sleep(1000);
 				 countdown.incrementCount();
