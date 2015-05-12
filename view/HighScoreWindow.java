@@ -28,9 +28,9 @@ public class HighScoreWindow extends JFrame{
 	
 	public HighScoreWindow() throws IOException{
 		
-		panel1 = new JPanel();
-		panel2 = new JPanel();
-		panel = new JPanel();
+		panel1 = new JPanel(); //name
+		panel2 = new JPanel(); //score
+		panel = new JPanel(); //scenario
 		panel3 = new JPanel();
 		panel1.setLayout(new BoxLayout(panel1, BoxLayout.Y_AXIS));
 		panel2.setLayout(new BoxLayout(panel2, BoxLayout.Y_AXIS));
@@ -38,22 +38,27 @@ public class HighScoreWindow extends JFrame{
 		
 		ScorePasser passer = new ScorePasser();
 		
+		//gets all of the scores, names, and scenarios that were saved.
 		highScores = passer.getScores();
 		highNames = passer.getNames();
 		highScenarios = passer.getScenarios();
 		
+		//adds name label
 		namesDisplay.add(new JLabel());
 		namesDisplay.get(0).setText("NAME");
 		panel1.add(namesDisplay.get(0));
 		
+		//adds score label
 		scoresDisplay.add(new JLabel());
 		scoresDisplay.get(0).setText("SCORE");
 		panel2.add(scoresDisplay.get(0));
 		
+		//adds scenario label
 		scenarioDisplay.add(new JLabel());
 		scenarioDisplay.get(0).setText("SCENARIO");
 		panel.add(scenarioDisplay.get(0));
 		
+		//adds dividers
 		namesDisplay.add(new JLabel());
 		namesDisplay.get(1).setText("---------------------------");
 		panel1.add(namesDisplay.get(1));
@@ -66,6 +71,7 @@ public class HighScoreWindow extends JFrame{
 		scenarioDisplay.get(1).setText("-------------------------------");
 		panel.add(scenarioDisplay.get(1));
 		
+		//adds each name, score, and scenario to each panel
 		for(int x = 2; x < highNames.size() + 2; x++){
 			
 			namesDisplay.add(new JLabel());
@@ -81,6 +87,7 @@ public class HighScoreWindow extends JFrame{
 			panel.add(scenarioDisplay.get(x));
 		}
 		
+		//Combines all three panels into a flow layout.
 		panel3.setLayout(new FlowLayout(FlowLayout.LEFT));
 		panel3.add(panel1);
 		panel3.add(panel2);

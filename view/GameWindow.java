@@ -99,6 +99,7 @@ public class GameWindow extends JFrame{
 		Grid = new ArrayList<ArrayList<GridSquares>>();
 		ArrayList<GridSquares> data;
 
+		//Creates the game as a grid. Each grid square represents a space in the window for the snake to move.
 		for(int i=0;i<width;i++){
 			data= new ArrayList<GridSquares>();
 			for(int j=0;j<height;j++){
@@ -108,18 +109,20 @@ public class GameWindow extends JFrame{
 			Grid.add(data);
 		}
 		
+		//Sets the panel as a GridLayout
 		gameGrid.setLayout(new GridLayout(width,height,0,0));
 
 		if(settings.isBorderLimited())
 			gameGrid.setBorder(BorderFactory.createLineBorder(Color.blue, 10));
 		
-		
+		//Adds the squares to the panel
 		for(int i=0;i<width;i++){
 			for(int j=0;j<height;j++){
 				gameGrid.add(Grid.get(i).get(j).getSquare());
 			}
 		}
 		
+		//Sets the size of the panel and adds the layer to the pane.
 		layeredPane.setPreferredSize(new Dimension(getContentPane().getPreferredSize()));
 		layeredPane.add(gameGrid, new Integer(0));
 
@@ -137,12 +140,15 @@ public class GameWindow extends JFrame{
 		//start the game
 		c.start();
 
+		//Creates the initial countdown layered panel
 		countdown.setLayout(new GridLayout(1,1,0,0));
 		countdown.add(c.getLabel());
 		countdown.setBackground(Color.WHITE);
 		countdown.setBounds(Settings.screenWidth/2, Settings.screenHeight/2-30, 20, 20);
+		//Sets the countdown panel above the game layout
 		layeredPane.add(countdown, new Integer(1));
 		
+		//Creates the score layered panel
 		score.setLayout(new GridLayout(1, 1, 0, 0));
 		score.add(c.getScoreLabel());
 		score.setOpaque(false);

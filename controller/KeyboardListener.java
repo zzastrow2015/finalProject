@@ -6,6 +6,9 @@ import java.awt.event.KeyEvent;
 public class KeyboardListener extends KeyAdapter{
  	
 	public void keyPressed(KeyEvent e){
+		
+		//The if-then statements in each case prevent the snake from backtracking on itself.
+		
 		switch(e.getKeyCode()){
 			case 39://right 
 				if(ThreadsController.directionSnake!=2) 

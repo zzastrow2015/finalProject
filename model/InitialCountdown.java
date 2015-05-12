@@ -6,10 +6,12 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
+//Counts down the initial timer to determine when to start the game.
 public class InitialCountdown extends JPanel{
 
 	private int count;
 	
+	//starts countdown at 3.
 	public InitialCountdown(){
 		count = 3;
 	}

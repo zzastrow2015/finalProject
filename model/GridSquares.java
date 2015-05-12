@@ -19,6 +19,7 @@ public class GridSquares {
 		square = new SquarePanel(C.get(color));
 	}
 	
+	//sets the color of the object according to the color array list.
 	public void setColor(int c){
 		square.ChangeColor(C.get(c));
 	}
